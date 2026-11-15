@@ -1,5 +1,11 @@
 [
   {
+    "fecha": "2026-11-15T19:33:13.994Z",
+    "agente": "github-actions",
+    "mensaje": "Aviso: falta LEMONSQUEEZY_API_KEY; 1 producto(s) esperan checkout",
+    "enlace": null
+  },
+  {
     "fecha": "2026-11-15T19:26:43Z",
     "agente": "github-actions",
     "mensaje": "Sistema creado",
