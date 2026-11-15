@@ -1,0 +1,38 @@
+[
+  {
+    "id": "radar-ia-saas",
+    "nombre": "Radar IA y SaaS",
+    "rol": "Investigador",
+    "horario": "L–V 5:38 a.m.",
+    "ultima_ejecucion": null,
+    "estado": "esperando",
+    "ultimo_resultado": ""
+  },
+  {
+    "id": "radar-ecommerce",
+    "nombre": "Radar e-commerce sin inventario",
+    "rol": "Investigador",
+    "horario": "L–V 6:12 a.m.",
+    "ultima_ejecucion": null,
+    "estado": "esperando",
+    "ultimo_resultado": ""
+  },
+  {
+    "id": "constructor",
+    "nombre": "Constructor de productos",
+    "rol": "Constructor",
+    "horario": "L–V 7:00 a.m. (aprox.)",
+    "ultima_ejecucion": null,
+    "estado": "esperando",
+    "ultimo_resultado": ""
+  },
+  {
+    "id": "github-actions",
+    "nombre": "Publicador (GitHub Actions)",
+    "rol": "Publicador y ventas",
+    "horario": "en cada push + diario",
+    "ultima_ejecucion": null,
+    "estado": "esperando",
+    "ultimo_resultado": ""
+  }
+]

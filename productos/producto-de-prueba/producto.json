@@ -1,0 +1,21 @@
+{
+  "slug": "producto-de-prueba",
+  "oportunidad_id": null,
+  "nombre": "Checkout Test Kit",
+  "subtitulo": "A 2-page sample PDF used to test the store",
+  "descripcion_corta": "Internal test product. A short sample PDF that verifies checkout, redirect and download work end to end.",
+  "descripcion_larga_md": "## What this is\n\nThis is an **internal test product**. It exists only to check that the full purchase flow works:\n\n1. The checkout opens with the right name, price and cover.\n2. After paying, you are redirected to the download page.\n3. The file downloads correctly.\n\n## Who it's for\n\nNobody, really. If you can see this page, please don't buy it.",
+  "incluye": ["2-page sample PDF"],
+  "precio_usd_centavos": 500,
+  "categoria": "Test",
+  "idioma": "en",
+  "portada": "portada.png",
+  "archivos": ["archivos/checkout-test-kit.pdf"],
+  "token_descarga": "p9dpamyronnqqvopxl544w3viv4vibjn",
+  "estado": "construido",
+  "checkout_url": null,
+  "checkout_id": null,
+  "creado_por": "claude-code",
+  "fecha_creacion": "2026-11-15",
+  "prueba": true
+}

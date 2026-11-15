@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow, noarchive">
+<meta name="referrer" content="no-referrer">
+<title>Panel de control — {{tienda}}</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%2316181d'/%3E%3Ccircle cx='21' cy='11' r='7' fill='%232b3fe6'/%3E%3Crect x='7' y='18' width='12' height='7' rx='2' fill='%23f6f3ec'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="{{base}}/assets/panel.css">
+</head>
+<body data-base="{{base}}">
+<header class="cab">
+  <div>
+    <p class="cab__sobre">{{tienda}}</p>
+    <h1>Panel de control</h1>
+  </div>
+  <div class="cab__lado">
+    <span id="modo" class="modo" hidden>MODO PRUEBA</span>
+    <span class="refresco"><span class="refresco__punto" aria-hidden="true"></span><span id="refresco">Cargando…</span></span>
+    <a class="enlace-tienda" href="{{base}}/">Ver tienda ↗</a>
+  </div>
+</header>
+
+<main>
+  <p id="error" class="error" hidden></p>
+
+  <section aria-labelledby="t-agentes">
+    <h2 id="t-agentes">Agentes</h2>
+    <div id="agentes" class="agentes"></div>
+  </section>
+
+  <section aria-labelledby="t-pipeline">
+    <h2 id="t-pipeline">Pipeline</h2>
+    <div id="pipeline" class="kanban"></div>
+    <details id="descartadas" class="descartadas" hidden>
+      <summary></summary>
+      <div class="descartadas__lista"></div>
+    </details>
+  </section>
+
+  <section aria-labelledby="t-ventas">
+    <h2 id="t-ventas">Ventas</h2>
+    <div id="cifras" class="cifras"></div>
+    <div class="ventas">
+      <div class="caja">
+        <h3>Ingresos por día <small>(últimos 30 días, USD)</small></h3>
+        <div id="grafica" class="grafica"></div>
+      </div>
+      <div class="caja">
+        <h3>Ingreso por producto</h3>
+        <div class="tabla-envoltura"><table id="tabla-productos" class="tabla"></table></div>
+      </div>
+      <div class="caja caja--ancha">
+        <h3>Últimos pedidos</h3>
+        <div class="tabla-envoltura"><table id="tabla-pedidos" class="tabla"></table></div>
+      </div>
+    </div>
+  </section>
+
+  <section aria-labelledby="t-actividad">
+    <h2 id="t-actividad">Actividad</h2>
+    <ol id="actividad" class="linea"></ol>
+  </section>
+</main>
+<script src="{{base}}/assets/panel.js" defer></script>
+</body>
+</html>

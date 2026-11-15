@@ -1,0 +1,8 @@
+{
+  "actualizado": null,
+  "modo_prueba": true,
+  "totales": { "pedidos": 0, "ingresos_usd": 0, "reembolsos": 0 },
+  "por_producto": {},
+  "sin_asignar": { "pedidos": 0, "ingresos_usd": 0 },
+  "ultimos_pedidos": []
+}

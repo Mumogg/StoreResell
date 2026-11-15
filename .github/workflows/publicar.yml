@@ -1,0 +1,85 @@
+name: Publicar tienda
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "productos/**"
+      - "data/**"
+      - "scripts/**"
+      - "plantillas/**"
+  workflow_dispatch:
+  workflow_call:
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+concurrency:
+  group: publicar
+  cancel-in-progress: false
+
+jobs:
+  publicar:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deploy.outputs.page_url }}
+    steps:
+      # Siempre la última versión de main (cuando lo llama ventas.yml ya hay un commit nuevo).
+      - uses: actions/checkout@v5
+        with:
+          ref: main
+
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 22
+
+      - name: Validar datos
+        run: node scripts/validar.mjs
+
+      # Si falta el secreto, el script avisa y sigue: el sitio se publica igual.
+      - name: Crear checkouts en Lemon Squeezy
+        id: checkouts
+        env:
+          LEMONSQUEEZY_API_KEY: ${{ secrets.LEMONSQUEEZY_API_KEY }}
+          LEMONSQUEEZY_STORE_ID: ${{ vars.LEMONSQUEEZY_STORE_ID }}
+          LEMONSQUEEZY_VARIANT_ID: ${{ vars.LEMONSQUEEZY_VARIANT_ID }}
+          LEMONSQUEEZY_TEST_MODE: ${{ vars.LEMONSQUEEZY_TEST_MODE }}
+        run: node scripts/crear-checkouts.mjs
+
+      - name: Guardar cambios (commit del bot)
+        run: |
+          if [ -z "$(git status --porcelain)" ]; then
+            echo "Sin cambios que guardar."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git commit -m "chore: checkouts creados [skip ci]"
+          for intento in 1 2 3; do
+            if git push origin HEAD:main; then exit 0; fi
+            echo "Push rechazado (intento $intento); rebase y reintento…"
+            git pull --rebase origin main
+          done
+          echo "::error::No se pudo hacer push después de 3 intentos."
+          exit 1
+
+      # El latido del publicador solo viaja en el sitio publicado (no genera un commit por cada despliegue).
+      - name: Registrar latido del publicador
+        env:
+          RESUMEN: ${{ steps.checkouts.outputs.resumen }}
+        run: node scripts/latido.mjs github-actions ok "Sitio publicado · ${RESUMEN:-sin novedades}"
+
+      - name: Generar sitio
+        run: node scripts/build-site.mjs
+
+      - uses: actions/upload-pages-artifact@v4
+        with:
+          path: dist
+
+      - name: Desplegar en GitHub Pages
+        id: deploy
+        uses: actions/deploy-pages@v4

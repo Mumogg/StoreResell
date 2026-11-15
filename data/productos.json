@@ -1,0 +1,14 @@
+[
+  {
+    "slug": "producto-de-prueba",
+    "oportunidad_id": null,
+    "nombre": "Checkout Test Kit",
+    "subtitulo": "A 2-page sample PDF used to test the store",
+    "precio_usd_centavos": 500,
+    "categoria": "Test",
+    "estado": "construido",
+    "checkout_url": null,
+    "prueba": true,
+    "fecha_creacion": "2026-11-15"
+  }
+]
