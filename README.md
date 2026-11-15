@@ -1,5 +1,8 @@
 # StoreResell
 
+> **Pausado el 15-nov-2026, reemplazado por la tienda Shopify madebymumo.com.**
+> GitHub Pages está desactivado y los workflows (`publicar.yml`, `ventas.yml`) están deshabilitados. La integración con Lemon Squeezy nunca se activó. Lo que sigue describe el sistema tal como quedó.
+
 Tienda de productos digitales automatizada por agentes de IA.
 
 - **Tienda:** https://mumogg.github.io/StoreResell/
